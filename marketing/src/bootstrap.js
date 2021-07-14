@@ -8,6 +8,8 @@ const mount = (el, { onNavigate, defaultHistory }) => {
   // we will use browser history only in the container project so only the container will change 
   // the url, and all routing inside the shared mfe will be seamless to the user and will not change
   // the actual location (e.g like in the gmail web app)
+  // if we run the mfe in isolation, only then we will use browser history.
+  // we will also use callbacks to communicate navigation changes between the container and the mfe in both directions
   const history = defaultHistory || createMemoryHistory();
   if(onNavigate){
     history.listen(onNavigate); // onNavigate iss a callback supplied by the container app
